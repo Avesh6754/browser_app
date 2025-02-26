@@ -38,6 +38,7 @@ dependencies:
 
   flutter_inappwebview: ^6.1.5
   get: ^4.7.2
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:
