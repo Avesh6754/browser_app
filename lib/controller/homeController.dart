@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_adv_ch4/modal/modalClass.dart';
+import 'package:flutter_adv_ch4/sevice/dbhelper.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class WebGetController extends GetxController {
   RxString selectedSearchEngine = "https://www.google.com/search?q=".obs;
   RxString selectedSearchEngineName = "Google".obs;
+
+  RxList<ModalClass> historyList=<ModalClass>[].obs;
 
   List<String> linkList = [
     "https://www.google.com/search?q=",
@@ -16,67 +20,16 @@ class WebGetController extends GetxController {
   List<String> searchEngineNames = ["Google", "Bing", "Yahoo"];
 
   List<String> imageList = [
-    "https://upload.wikimedia.org/wikipedia/commons/4/4a/Google_2015_logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/9/9c/Bing_logo_%282016%29.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/2/24/Yahoo%21_logo.svg",
+    "Google",
+    "Bing",
+    "yahoo",
   ];
 
   TextEditingController txtSearch = TextEditingController();
   InAppWebViewController? webViewController;
 
-  RxList<String> history = <String>[].obs;
+  RxInt history = 0.obs;
   RxList<String> bookmarks = <String>[].obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    loadHistory();
-    loadBookmarks();
-  }
-
-  // Load browsing history
-  Future<void> loadHistory() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    history.value = prefs.getStringList("history") ?? [];
-  }
-
-  // Save browsing history
-  Future<void> saveHistory(String url) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (!history.contains(url)) {
-      history.add(url);
-      await prefs.setStringList("history", history);
-    }
-  }
-
-  // Clear history
-  Future<void> clearHistory() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    history.clear();
-    await prefs.remove("history");
-  }
-
-  // Load bookmarks
-  Future<void> loadBookmarks() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bookmarks.value = prefs.getStringList("bookmarks") ?? [];
-  }
-
-  // Add bookmark
-  Future<void> addBookmark(String url) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (!bookmarks.contains(url)) {
-      bookmarks.add(url);
-      await prefs.setStringList("bookmarks", bookmarks);
-    }
-  }
-
-  // Remove bookmark
-  Future<void> removeBookmark(String url) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bookmarks.remove(url);
-    await prefs.setStringList("bookmarks", bookmarks);
-  }
 
   void getWebsiteLink(int index) {
     selectedSearchEngine.value = linkList[index];
@@ -89,7 +42,25 @@ class WebGetController extends GetxController {
     if (webViewController != null) {
       String url = "${selectedSearchEngine.value}${txtSearch.text}";
       webViewController!.loadUrl(urlRequest: URLRequest(url: WebUri(url)));
-      saveHistory(url);
     }
+  }
+
+  Future<void> insertIntoDatabase(String name,String url)
+  async {
+    ModalClass items=ModalClass(name: name, url: url);
+    await Dbhelper.dbhelper.insertBookMark(items);
+  }
+
+  Future<List<ModalClass>> fetchHistory()
+  async {
+    final data=await Dbhelper.dbhelper.fetchDataHistory();
+    historyList.value=data.map((e) => ModalClass.fromMap(e),).toList();
+    return historyList;
+
+  }
+
+  void changeHistory(var value)
+  {
+    history.value=value;
   }
 }

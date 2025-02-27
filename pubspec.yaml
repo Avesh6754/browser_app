@@ -38,7 +38,9 @@ dependencies:
 
   flutter_inappwebview: ^6.1.5
   get: ^4.7.2
-  shared_preferences: any
+
+  sqflite: any
+  path: any
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adv_ch4/views/history_page.dart';
+import 'package:flutter_adv_ch4/sevice/dbhelper.dart';
+import 'package:flutter_adv_ch4/views/historypage.dart';
+
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import '../controller/homeController.dart';
@@ -59,7 +61,6 @@ class _HomePageState extends State<HomePage> {
                 value: index,
                 child: Row(
                   children: [
-                    Image.network(getController.imageList[index], width: 24, height: 24),
                     const SizedBox(width: 10),
                     Text(getController.searchEngineNames[index]),
                   ],
@@ -69,13 +70,6 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.more_vert),
           ),
 
-          IconButton(onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryPage(),));
-          }, icon: Icon(Icons.history)),
-          IconButton(
-            icon: const Icon(Icons.bookmark),
-            onPressed: () => showBookmarks(context),
-          ),
         ],
       ),
       body: Obx(
@@ -86,6 +80,10 @@ class _HomePageState extends State<HomePage> {
           onWebViewCreated: (controller) {
             getController.webViewController = controller;
           },
+              onLoadStop: (controller, url) async {
+               String? title=await controller.getTitle();
+               getController.insertIntoDatabase(title!, url.toString());
+              },
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -108,46 +106,17 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             label: 'Home',
             icon: IconButton(
-              onPressed: () => getController.loadWebPage(),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryPage(),));
+              },
               icon: const Icon(Icons.home),
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-         await getController.addBookmark(getController.txtSearch.text);
-        },
-        child: const Icon(Icons.bookmark_add),
       ),
 
     );
   }
 }
 
-void showBookmarks(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    builder: (context) {
-      return Obx(
-            () => ListView.builder(
-          itemCount: getController.bookmarks.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(getController.bookmarks[index]),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () => getController.removeBookmark(getController.bookmarks[index]),
-              ),
-              onTap: () {
-                getController.txtSearch.text = getController.bookmarks[index];
-                getController.loadWebPage();
-                Navigator.pop(context);
-              },
-            );
-          },
-        ),
-      );
-    },
-  );
-}
+

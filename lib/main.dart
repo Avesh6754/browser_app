@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adv_ch4/controller/homeController.dart';
+import 'package:flutter_adv_ch4/sevice/dbhelper.dart';
+
 import 'package:flutter_adv_ch4/views/homepage.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Dbhelper.dbhelper.database;
 
   runApp(const MyApp());
 }
