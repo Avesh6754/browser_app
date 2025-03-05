@@ -1,4 +1,4 @@
-# 🌐 Browser App (Flutter)  
+![Screenshot 2025-03-05 122705](https://github.com/user-attachments/assets/39d99b5e-4836-4a53-ae89-8e65cd6742ca)# 🌐 Browser App (Flutter)  
 
 A **lightweight and feature-rich browser app** built using **Flutter** with **InAppWebView** for web browsing and **GetX** for state management. This app provides a smooth browsing experience with features like **browser selection, history storage, reload, back, and forward navigation**.  
 
@@ -86,4 +86,18 @@ flutter run
 🚀 **Download manager**  
 
 
-https://github.com/user-attachments/assets/c92d84c7-50ad-4819-8237-caa57e6bb56f
+
+
+
+
+
+
+<p>
+  <img src="https://github.com/user-attachments/assets/5f8e3d4b-391f-4d9b-b705-1cf895fba8d4" width="22%" Height="35%">
+   <img src="https://github.com/user-attachments/assets/b14cc1d4-7d31-4d19-b58a-db3650d9d6a3" width="22%" Height="35%">
+    <img src="https://github.com/user-attachments/assets/39ec5ba8-d1ba-4721-aa8b-c53bde00857e" width="22%" Height="35%">
+     <img src="https://github.com/user-attachments/assets/bdb6d02f-dbf1-4980-b4ab-7536e6fab246" width="22%" Height="35%">
+      <img src="https://github.com/user-attachments/assets/4a62026b-2ce3-4ce0-bed4-ce8042bf653c" Height="35%">        
+</p>
+
+https://github.com/user-attachments/assets/80d5a724-dfc9-42d2-89ab-fccc38c3dad9
