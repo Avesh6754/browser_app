@@ -85,19 +85,18 @@ flutter run
 🚀 **Private browsing mode**  
 🚀 **Download manager**  
 
-
-
-
-
-
-
-
 <p>
   <img src="https://github.com/user-attachments/assets/5f8e3d4b-391f-4d9b-b705-1cf895fba8d4" width="22%" Height="35%">
    <img src="https://github.com/user-attachments/assets/b14cc1d4-7d31-4d19-b58a-db3650d9d6a3" width="22%" Height="35%">
     <img src="https://github.com/user-attachments/assets/39ec5ba8-d1ba-4721-aa8b-c53bde00857e" width="22%" Height="35%">
      <img src="https://github.com/user-attachments/assets/bdb6d02f-dbf1-4980-b4ab-7536e6fab246" width="22%" Height="35%">
-      <img src="https://github.com/user-attachments/assets/4a62026b-2ce3-4ce0-bed4-ce8042bf653c" Height="35%">        
+      
 </p>
+<p>
+ <img src="https://github.com/user-attachments/assets/4a62026b-2ce3-4ce0-bed4-ce8042bf653c" Height="35%">      
+</p>
+  
+
+  
 
 https://github.com/user-attachments/assets/80d5a724-dfc9-42d2-89ab-fccc38c3dad9
