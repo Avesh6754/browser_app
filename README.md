@@ -78,10 +78,12 @@ flutter run
  ┣ 📜 pubspec.yaml  
  ┣ 📜 README.md  
 ```
-
 ## 💡 Future Enhancements  
 
 🚀 **Multiple browser support**  
 🚀 **Bookmarks feature**  
 🚀 **Private browsing mode**  
 🚀 **Download manager**  
+
+
+https://github.com/user-attachments/assets/c92d84c7-50ad-4819-8237-caa57e6bb56f
