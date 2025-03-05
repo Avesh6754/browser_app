@@ -1,4 +1,4 @@
-![Screenshot 2025-03-05 122705](https://github.com/user-attachments/assets/39d99b5e-4836-4a53-ae89-8e65cd6742ca)# 🌐 Browser App (Flutter)  
+# 🌐 Browser App (Flutter)  
 
 A **lightweight and feature-rich browser app** built using **Flutter** with **InAppWebView** for web browsing and **GetX** for state management. This app provides a smooth browsing experience with features like **browser selection, history storage, reload, back, and forward navigation**.  
 
@@ -95,7 +95,8 @@ flutter run
 <p>
  <img src="https://github.com/user-attachments/assets/4a62026b-2ce3-4ce0-bed4-ce8042bf653c" Height="35%">      
 </p>
-  
+
+  <h3>Video</h3>
 
   
 
