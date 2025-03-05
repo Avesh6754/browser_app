@@ -1,9 +1,3 @@
-# browser_app
-
-Here’s a **properly structured README.md** for your **Browser App using InAppWebView & GetX**:  
-
----
-
 # 🌐 Browser App (Flutter)  
 
 A **lightweight and feature-rich browser app** built using **Flutter** with **InAppWebView** for web browsing and **GetX** for state management. This app provides a smooth browsing experience with features like **browser selection, history storage, reload, back, and forward navigation**.  
